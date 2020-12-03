@@ -8,6 +8,7 @@ import { reducer } from './reducer';
 
 
 export type Report = {
+    id: number,
     lat: number,
     lon: number,
     message: string,

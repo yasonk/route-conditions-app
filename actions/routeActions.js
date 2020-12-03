@@ -58,9 +58,9 @@ export const getReports = () => {
         //Dispatch the fetchData action creator before retrieving to set our loading state to true.
         dispatch(fetchData(true));
         //Then do a get request the get the err, and response callback, if there's an error dispatch the fetchDataRejected.
-        superagent.get('http://localhost:3000/reports')
+        superagent.get('http://192.168.1.20:3000/reports')
         .set({ 
-            "Authorization": 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDY1OTQ0MzV9.dqFr9Yq1pe9GjTIW8TQC-bD259mwNM72VRcfN9BNNB8',
+            "Authorization": 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDY5NzIxNjZ9.fVwZkiol6quRAYdfrAy1ro85UxXQJBWqGYPRE6CxjsU',
             "Accept": "application/json"
         }).end((err, res) => {
             //if there is an error use our fetchDataReject
