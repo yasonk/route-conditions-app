@@ -10,7 +10,6 @@ const initialState = {
 
 //Define your reducer that will return the initialState by default
 export const reducer = (state = initialState, action) => {
-    
     if (isFetchData(action)){
         return { ...state, loading: action.payload };
     } else if (isFetchDataFulfilled(action)) {

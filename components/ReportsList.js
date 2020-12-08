@@ -27,6 +27,10 @@ export const ReportsList: (props: ReportsListProps) => React$Node = (props: Repo
   const { reports, loading, errorMessage } = props;
 
   const mapMarkers = () => {
+    if (props.reports.length === 0) {
+      return;
+    }
+
     return props.reports.map((report) => <Marker
       key={report.id}
       coordinate={{ latitude: parseFloat(report.lat), longitude: parseFloat(report.lon) }}
@@ -36,6 +40,17 @@ export const ReportsList: (props: ReportsListProps) => React$Node = (props: Repo
     </Marker >)
   }
 
+
+  let lat = 47.6062;
+  let lon = -122.3321;
+  let markers = [];
+
+  if (props.reports.length > 0) {
+    lat = props.reports[0].lat;
+    lon = props.reports[0].lon;
+    markers = mapMarkers()
+  }
+
   if (!loading) {
     return (
       <>
@@ -43,13 +58,13 @@ export const ReportsList: (props: ReportsListProps) => React$Node = (props: Repo
           provider={PROVIDER_GOOGLE} // remove if not using Google Maps
           style={styles.map}
           region={{
-            latitude: parseFloat(props.reports[0].lat),
-            longitude: parseFloat(props.reports[0].lon),
+            latitude: parseFloat(lat),
+            longitude: parseFloat(lon),
             latitudeDelta: 9.5,
             longitudeDelta: 9.5,
           }}
         >
-          {mapMarkers()}
+          {markers}
         </MapView>
         {/* <View style={styles.container}>
           {reports.length ? reports.map((report, i) => <Text key={i}>{report.message}</Text>) : <Text>No Reports</Text>}

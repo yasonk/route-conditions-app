@@ -33,16 +33,14 @@ import {
 
 const App: () => React$Node = () => {
   return (
-    <>
+    <Provider store={reportsStore}>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <View style={styles.body}>
-          <Provider store={reportsStore}>
-            <ReportsListContainer />
-          </Provider>
+          <ReportsListContainer />
         </View>
       </SafeAreaView>
-    </>
+    </Provider>
   );
 };
 
