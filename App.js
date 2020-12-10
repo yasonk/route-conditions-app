@@ -13,6 +13,8 @@ import { Provider } from 'react-redux';
 //import your store to connect your component.
 import { reportsStore } from './redux/store';
 import { registerRootComponent } from 'expo';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import {
   SafeAreaView,
@@ -21,6 +23,7 @@ import {
   View,
   Text,
   StatusBar,
+  Button,
 } from 'react-native';
 
 import {
@@ -31,7 +34,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
+function HomeScreen() {
   return (
     <Provider store={reportsStore}>
       <StatusBar barStyle="dark-content" />
@@ -42,7 +45,33 @@ const App: () => React$Node = () => {
       </SafeAreaView>
     </Provider>
   );
-};
+}
+
+function LoginScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button
+        title="Login"
+        onPress={() => navigation.navigate('HomeScreen')}
+      />
+    </View>
+  );
+}
+
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{
+        headerShown: false
+      }}>
+        <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
 const styles = StyleSheet.create({
   scrollView: {
