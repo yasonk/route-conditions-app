@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 export function LoginScreen(props) {
-  const [username, setUsername] = React.useState('');
+  const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
 
@@ -15,9 +15,9 @@ export function LoginScreen(props) {
     <View style={styles.container}>
       <View style={{ margin: 10 }} >
         <TextInput
-          placeholder="Username"
-          value={username}
-          onChangeText={setUsername}
+          placeholder="Email"
+          value={email}
+          onChangeText={setEmail}
         />
         <TextInput
           placeholder="Password"
@@ -25,7 +25,10 @@ export function LoginScreen(props) {
           onChangeText={setPassword}
           secureTextEntry
         />
-        <Button title="Sign in" onPress={() => props.onLogin()} />
+        <Button title="Sign in" onPress={() => {
+          console.log("YO YO YO");
+          props.onLogin(email, password)}
+        } />
       </View>
     </View>
   );

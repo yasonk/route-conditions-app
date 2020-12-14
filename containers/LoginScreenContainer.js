@@ -4,6 +4,7 @@ import React, {useMemo} from 'react';
 import {LoginScreen} from "../components/LoginScreen";
 import {useDispatch, useSelector} from "react-redux";
 import {bindActionCreators, Dispatch} from "redux";
+import {authenticateUser} from "../actions/routeActions";
 
 
 export function LoginScreenContainer () {
@@ -17,7 +18,7 @@ export function LoginScreenContainer () {
 
     const boundActionProps = useMemo(() => bindActionCreators(
         {
-            onLogin: () => (dispatch: Dispatch) => { console.log("Yason testing stuff dog") }
+            onLogin: (email, password) => authenticateUser(email, password)
         },
         dispatch
     ), [dispatch]);
