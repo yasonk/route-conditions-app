@@ -15,7 +15,6 @@ import {registerRootComponent} from 'expo';
 import {NavContainer} from "./containers/NavContainer";
 
 function App() {
-    console.log("NAV CONTAINER");
   return (
     <Provider store={reportsStore}>
       <NavContainer />

@@ -26,7 +26,6 @@ export function LoginScreen(props) {
           secureTextEntry
         />
         <Button title="Sign in" onPress={() => {
-          console.log("YO YO YO");
           props.onLogin(email, password)}
         } />
       </View>

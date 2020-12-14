@@ -71,7 +71,6 @@ export const getReports = () => {
             //if there is an error use our fetchDataReject
             if ( err ) dispatch( fetchDataRejected( err ) );
             //We will set our loading state when fetching data is successful.
-            console.log( res )
             if ( res ) dispatch( fetchDataFulfilled( res.body ) );
         } )
     }
@@ -97,13 +96,12 @@ export function isAuthenticateUserDoneAction ( action ) {
 }
 
 //Define a action creator to set your loading state to false, and return the data when the promise is resolved
-export function createAuthenticateUserDoneAction ( email, password ) {
+export function createAuthenticateUserDoneAction ( authToken ) {
     //Return a action type and a loading to false, and the data.
     return {
         type: AUTHENTICATE_USER_DONE_ACTION,
         payload: {
-            email: email,
-            password: password,
+            authToken: authToken,
         },
     };
 }
@@ -111,7 +109,6 @@ export function createAuthenticateUserDoneAction ( email, password ) {
 
 export function authenticateUser ( email: string, password: string ) {
     return ( dispatch: Dispatch ) => {
-        console.log("HERE WE GO")
         dispatch( (createAuthenticateUserRequestAction( email )) );
         superagent.post( 'http://192.168.1.20:3000/authenticate' )
             .send( {email: email, password: password} )
@@ -119,8 +116,6 @@ export function authenticateUser ( email: string, password: string ) {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
             } ).end( ( err, res ) => {
-            console.log( "AUTHENTICATING" );
-            console.log( res.body.auth_token );
             if ( res ) dispatch( createAuthenticateUserDoneAction( res.body.auth_token ) );
         } )
     }
