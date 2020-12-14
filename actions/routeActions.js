@@ -65,7 +65,7 @@ export const getReports = () => {
         //Then do a get request the get the err, and response callback, if there's an error dispatch the fetchDataRejected.
         superagent.get( 'http://192.168.1.20:3000/reports' )
             .set( {
-                "Authorization": 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDY5NzIxNjZ9.fVwZkiol6quRAYdfrAy1ro85UxXQJBWqGYPRE6CxjsU',
+                "Authorization": 'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MDgwMDY3NzR9.UnmS7foEvIIjwIGuPwx5YB7FUJOkZ3zigmk3_jGg6jc',
                 "Accept": "application/json"
             } ).end( ( err, res ) => {
             //if there is an error use our fetchDataReject
