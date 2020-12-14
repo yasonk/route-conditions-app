@@ -12,6 +12,7 @@ export function ReportsListContainer() {
             reports: state.map.reports,
             loading: state.map.loading,
             errorMessage: state.map.errorMessage,
+            authToken: state.user.authToken,
         };
     });
 
@@ -19,7 +20,7 @@ export function ReportsListContainer() {
 
     const boundActionProps = useMemo(() => bindActionCreators(
         {
-            onRefreshReports: getReports
+            onRefreshReports: (authToken) => getReports(authToken)
         },
         dispatch
     ), [dispatch]);

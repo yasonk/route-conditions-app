@@ -21,7 +21,7 @@ export type ReportsListProps = {
 
 export const ReportsList: (props: ReportsListProps) => React$Node = (props: ReportsListProps) => {
   useEffect(() => {
-    props.onRefreshReports();
+    props.onRefreshReports(props.authToken);
   }, [props.onRefreshReports]);
 
   const { reports, loading, errorMessage } = props;
