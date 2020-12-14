@@ -3,8 +3,8 @@ import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from "redux-devtools-extension/index";
 //import thunk for doing asynchronous operations in redux
 import thunk from 'redux-thunk';
-//import reducer from our reducer file
-import { reducer } from './reducer';
+import {routeConditionsReducer} from "./reducers/routeConditionsReducer";
+//import mapReducer from our mapReducer file
 
 
 export type Report = {
@@ -15,6 +15,6 @@ export type Report = {
 }
 
 export const reportsStore = createStore(
-    reducer,
+    routeConditionsReducer,
     composeWithDevTools(applyMiddleware(thunk))
 );

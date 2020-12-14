@@ -9,9 +9,9 @@ import { ReportsList } from "../components/ReportsList";
 export function ReportsListContainer() {
     const stateProps = useSelector(state => {
         return {
-            reports: state.reports,
-            loading: state.loading,
-            errorMessage: state.errorMessage,
+            reports: state.map.reports,
+            loading: state.map.loading,
+            errorMessage: state.map.errorMessage,
         };
     });
 
